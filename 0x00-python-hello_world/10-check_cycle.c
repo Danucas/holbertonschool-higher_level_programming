@@ -10,23 +10,13 @@ int check_cycle(listint_t *list)
 	listint_t *s;
 
 	if (f->next != NULL)
-	{
 		s = f->next;
-		if (s->n == f->n)
-		{
-			return (1);
-		}
-	}
 	else
-	{
 		return (0);
-	}
 	while (f != NULL)
 	{
-		if (f->n == s->n)
-		{
+		if (f == s)
 			return (1);
-		}
 		f = f->next;
 		if (s->next != NULL)
 		{
