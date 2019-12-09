@@ -13,7 +13,7 @@ int check_cycle(listint_t *list)
 		s = f->next;
 	else
 		return (0);
-	while (f != NULL)
+	while (f != NULL && s != NULL)
 	{
 		if (f == s)
 			return (1);
