@@ -7,12 +7,21 @@
 int check_cycle(listint_t *list)
 {
 	listint_t *li = list;
-	int f = li->n;
+	int f;
 	int s;
-
+	if (li != NULL)
+	{
+		f = li->n;
+	}
+	else
+		return (0);
 	if (li->next != NULL)
 	{
 		s = li->next->n;
+		if (s == f)
+		{
+			return (1);
+		}
 		li = li->next->next;
 	}
 	else
