@@ -6,42 +6,37 @@
  */
 int check_cycle(listint_t *list)
 {
-	listint_t *li = list;
-	int f;
-	int s;
-	if (li != NULL)
+	listint_t *f = list;
+	listint_t *s;
+
+	if (f->next != NULL)
 	{
-		f = li->n;
-	}
-	else
-		return (0);
-	if (li->next != NULL)
-	{
-		s = li->next->n;
-		if (s == f)
+		s = f->next;
+		if (s->n == f->n)
 		{
 			return (1);
 		}
-		li = li->next->next;
 	}
 	else
 	{
 		return (0);
 	}
-	while (li != NULL)
+	while (f != NULL)
 	{
-		if (li->n == f)
+		if (f->n == s->n)
 		{
-			if (li->next != NULL && li->next->n == s)
-			{
-				return (1);
-			}
-			else
-			{
-				return (0);
-			}
+			return (1);
 		}
-		li = li->next;
+		f = f->next;
+		if (s->next != NULL)
+		{
+			if (s->next->next != NULL)
+				s = s->next->next;
+			else
+				return (0);
+		}
+		else
+			return (0);
 	}
 	return (0);
 }
