@@ -13,20 +13,13 @@ int check_cycle(listint_t *list)
 		s = f->next;
 	else
 		return (0);
-	while (f != NULL && s != NULL)
+	while (f != NULL && s != NULL && s->next != NULL)
 	{
 		if (f == s)
 			return (1);
 		f = f->next;
-		if (s->next != NULL)
-		{
-			if (s->next->next != NULL)
-				s = s->next->next;
-			else
-				return (0);
-		}
-		else
-			return (0);
+		if (s->next->next != NULL)
+			s = s->next->next;
 	}
 	return (0);
 }
