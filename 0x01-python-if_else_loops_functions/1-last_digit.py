@@ -3,7 +3,7 @@ import random
 number = random.randint(-10000, 10000)
 last = "{}".format(number)
 last = int(last[-1])
-sign = "{si}".format(si="-" if number < 0 else "")
+sign = "{si}".format(si="-" if number < 0 and last != 0 else "")
 print("Last digit of {} is {}{} ".format(number, sign, last), end='')
 if last > 5:
     print("and is grater than 5")
