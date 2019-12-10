@@ -5,10 +5,10 @@ last = "{}".format(number)
 last = int(last[-1])
 if number < 0:
     last = last * (-1)
-print("Last digit of {} is {} ".format(number, last), end='')
+print("Last digit of {} is".format(number, last), end=" ")
 if last > 5:
-    print("and is greater than 5")
+    print("{} and is greater than 5".format(last))
 elif last < 6 and last != 0:
-    print("and is less than 6 and not 0")
+    print("{} and is less than 6 and not 0".format(last))
 else:
-    print("and is 0")
+    print("{} and is 0".format(last))
