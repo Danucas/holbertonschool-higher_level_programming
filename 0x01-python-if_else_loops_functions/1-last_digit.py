@@ -12,4 +12,3 @@ elif last < 6 and last is not 0:
     print("{:d} and is less than 6 and not 0".format(last))
 else:
     print("{:d} and is greater than 5".format(last))
-
