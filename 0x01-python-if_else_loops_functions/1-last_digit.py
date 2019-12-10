@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 import random
 number = random.randint(-10000, 10000)
-last = "{}".format(number)
-last = int(last[-1])
+last = abs(number) % 10
 if number < 0:
     last = last * -1
 print("Last digit of {:d} is".format(number), end=" ")
