@@ -1,0 +1,7 @@
+#!/bin/bash
+ls *.py | 
+while read file
+do
+	pep8 $file
+	echo "=============="
+done
