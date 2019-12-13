@@ -14,7 +14,7 @@ def checkdigits(number):
 
 
 def exit(filename):
-    print('Usage: {} <a> <operator> <b>'.format(filename))
+    print('Usage: {} a operator b'.format(filename))
     sys.exit(1)
 
 
