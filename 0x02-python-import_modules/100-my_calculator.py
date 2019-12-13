@@ -14,7 +14,7 @@ def checkdigits(number):
 
 
 def exit(filename):
-    print('Usage: {} a operator b'.format(filename))
+    print('Usage: {} <a> <operator> <b>'.format(filename))
     sys.exit(1)
 
 
@@ -26,8 +26,8 @@ def main():
         exit(argv[0])
     else:
         op = argv[2]
-        if checkdigits(argv[1]) is False or checkdigits(argv[3]) is False:
-            exit(argv[0])
+#        if checkdigits(argv[1]) is False or checkdigits(argv[3]) is False:
+#            exit(argv[0])
         a = int(argv[1])
         b = int(argv[3])
         if op == '+':
