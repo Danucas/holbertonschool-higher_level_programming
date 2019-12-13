@@ -1,8 +1,4 @@
 #!/usr/bin/python3
-from calculator_1 import add, sub, mul, div
-import sys
-
-
 def checkdigits(number):
     for digit in number:
         digit = ord(digit)
@@ -13,21 +9,22 @@ def checkdigits(number):
     return True
 
 
-def exit(filename):
+def exit(filename, sys):
     print('Usage: {} <a> <operator> <b>'.format(filename))
     sys.exit(1)
 
 
 def main():
-
+    from calculator_1 import add, sub, mul, div
+    import sys
     argv = sys.argv
     argc = len(argv)
     if argc != 4:
-        exit(argv[0])
+        exit(argv[0], sys)
     else:
         op = argv[2]
-#        if checkdigits(argv[1]) is False or checkdigits(argv[3]) is False:
-#            exit(argv[0])
+        if checkdigits(argv[1]) is False or checkdigits(argv[3]) is False:
+            exit(argv[0], sys)
         a = int(argv[1])
         b = int(argv[3])
         if op == '+':
