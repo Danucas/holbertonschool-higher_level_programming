@@ -11,34 +11,36 @@ int is_palindrome(listint_t **head)
 {
 	listint_t *li = *head;
 	int *comp_list;
-	int length = 0, pos;
+	unsigned int length = 0, pos;
 
 	while (li != NULL)
-	{
+	{li = li->next;
 		length++;
-		li = li->next;
 	}
 	li = *head;
-	comp_list = malloc(sizeof(int) * (length / 2));
-	pos = (length / 2) - 1;
-	while (li != NULL && pos >= 0)
+	pos = length;
+	pos--;
+	if (pos > 0)
 	{
-		comp_list[pos] = li->n;
-		li = li->next;
-		pos--;
+		comp_list = malloc(sizeof(int) * length);
+		while (li != NULL)
+		{
+			comp_list[pos] = li->n;
+			pos--;
+			li = li->next;
+			length++;
+		}
 	}
+	pos = 0;
 	li = *head;
-	pos = (length / 2) - 1;
-	while (li != NULL && pos >= 0)
+	while (li != NULL)
 	{
 		if (li->n != comp_list[pos])
 		{
-			free(comp_list);
 			return (0);
 		}
 		li = li->next;
-		pos--;
+		pos++;
 	}
-	free(comp_list);
 	return (1);
 }
