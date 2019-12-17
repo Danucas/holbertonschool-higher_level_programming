@@ -43,5 +43,6 @@ int is_palindrome(listint_t **head)
 		li = li->next;
 		pos++;
 	}
+	free(comp_list);
 	return (1);
 }
