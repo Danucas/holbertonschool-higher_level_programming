@@ -8,11 +8,11 @@ def roman_to_int(roman_string):
                 nex = roman_string[i + 1]
                 if nex in romans:
                     n = romans[nex]
-                    if n > romans[char] and n < (romans[char] * 100):
+                    if n > romans[char]:
                         sum = sum - romans[char]
                     else:
                         sum = sum + romans[char]
-                elif char in romans:
-                    sum = sum + romans[char]
+            elif char in romans:
+                sum = sum + romans[char]
         return sum
     return 0
