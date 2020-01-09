@@ -4,7 +4,9 @@ class Square():
     """Square object"""
     def __init__(self, size=0):
         """init
-        Description: initializes size"""
+        Description: initializes size
+        Args:
+            arg1 (size): the size to be set"""
         if isinstance(size, int):
             if size >= 0:
                 self.__size = size
