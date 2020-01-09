@@ -54,7 +54,7 @@ class Square():
         Args:
             arg1 (value): the value to be setted"""
         msg = "position must be a tuple of 2 positive integers"
-        if len(value) ==2 and value[0] >= 0 and value[1] >= 0:
+        if len(value) == 2 and value[0] >= 0 and value[1] >= 0:
             self.__position = (value[0], value[1])
         else:
             raise TypeError(msg)
