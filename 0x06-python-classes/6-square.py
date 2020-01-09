@@ -6,11 +6,6 @@ class Square():
     """Square object
     Attributes:
               attr1 (size): size of square"""
-    def __init__(self, size=0, position=(0, 0)):
-        """init
-        Description: initializes size"""
-        self.__size = size
-        self.__position = position
 
     def area(self):
         """Return the square area"""
@@ -47,6 +42,7 @@ class Square():
                 print()
         else:
             print()
+
     @property
     def position(self):
         """return the position tuple"""
@@ -58,10 +54,13 @@ class Square():
         Args:
             arg1 (value): the value to be setted"""
         msg = "position must be a tuple of 2 positive integers"
-        if isinstance(value, tuple) and len(value) == 2:
-            if value[0] >= 0 and value[1] >= 0:
-                self.__position = value
-            else:
-                raise TypeError(msg)
+        if value[0] >= 0 and value[1] >= 0:
+            self.__position = (value[0], value[1])
         else:
             raise TypeError(msg)
+
+    def __init__(self, size=0, position=(0, 0)):
+        """init
+        Description: initializes size"""
+        self.size = size
+        self.position = position
