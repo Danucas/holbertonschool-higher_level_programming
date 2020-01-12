@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """magic_module"""
 
+
 class MagicClass:
 
     """No lo se"""
