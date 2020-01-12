@@ -37,3 +37,7 @@ Now use it:
     >>> matrix_divided([[3, 2], [1, float("inf")]], 3)
     Traceback (most recent call last):
     TypeError: matrix must be a matrix (list of lists) of integer/floats
+
+    >>> matrix_divided()
+    
+    
