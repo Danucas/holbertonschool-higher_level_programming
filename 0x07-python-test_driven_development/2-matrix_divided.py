@@ -8,17 +8,18 @@ def matrix_divided(matrix, div):
         arg1 (matrix): the matrix to divide
         arg2 (div): number to divide by
     """
+    #print("start")
     if type(div) != int and type(div) != float:
         raise TypeError("div must be a number")
     if div == 0:
         raise ZeroDivisionError("division by zero")
     if type(matrix) != list:
-        raise TypeError("matrix must be a matrix (list of lists) of integer/\
+        raise TypeError("matrix must be a matrix (list of lists) of integers/\
         floats")
     length = 0
     new_matrix = []
     overf = "Each row of the matrix must have the same size"
-    form = "matrix must be a matrix (list of lists) of integer/floats"
+    form = "matrix must be a matrix (list of lists) of integers/floats"
     for y, row in enumerate(matrix):
         new_matrix.append([])
         if y > 0:
