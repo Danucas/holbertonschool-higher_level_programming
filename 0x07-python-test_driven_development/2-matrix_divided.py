@@ -8,7 +8,6 @@ def matrix_divided(matrix, div):
         arg1 (matrix): the matrix to divide
         arg2 (div): number to divide by
     """
-    #print("start")
     if type(div) != int and type(div) != float:
         raise TypeError("div must be a number")
     if div == 0:
