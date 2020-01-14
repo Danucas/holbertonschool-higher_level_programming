@@ -25,7 +25,8 @@ def matrix_divided(matrix, div):
             if len(row) != length:
                 raise TypeError(overf)
         for x, col in enumerate(row):
-            if type(col) != int and type(col) != float or (float(col) == float("inf")):
+            if type(col) != int and type(col) != float or\
+               (float(col) == float("inf")):
                 raise TypeError(form)
             else:
                 new_matrix[y].append(round(col / div, 2))

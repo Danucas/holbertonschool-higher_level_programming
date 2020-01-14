@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Dot product Module"""
 
+
 def max_integer(list=[]):
         """Function to find and return the max integer in a list of integers
         If the list is empty, the function returns None
@@ -24,23 +25,19 @@ def matrix_mul(m_a, m_b):
         print("TypeError(m_b must be a list)")
 
     width, height = len(m_b[0]), len(m_a)
-    #print("Size", width, height)
     new_matrix = []
     for y in range(height):
         new_matrix.append([])
         for x in range(width):
-            #this check each item in the row
             close = False
             res = 0
             for Yn in range(width):
-                 try:
-                     #print("multiplying {} x {}".format(m_a[y][Yn] ,m_b[Yn][x]))
-                     res += m_a[y][Yn] * m_b[Yn][x]
-                     #print(res, " ", end="")
-                 except Exception as e:
-                     print(type(e).__name__, e)
-                     close = True
-                     break
+                try:
+                    res += m_a[y][Yn] * m_b[Yn][x]
+                except Exception as e:
+                    print(type(e).__name__, e)
+                    close = True
+                    break
             if close is True:
                 raise ValueError("m_a and m_b can't be multiplied")
             new_matrix[y].append(res)
