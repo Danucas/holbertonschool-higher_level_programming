@@ -1,0 +1,9 @@
+#!/bin/bash
+position=0
+cat answers |
+    while read line
+    do
+	echo $line > "${position}-answer.txt"
+	echo "$line ||${position}-answer.txt"
+	position=$((position + 1))
+    done
