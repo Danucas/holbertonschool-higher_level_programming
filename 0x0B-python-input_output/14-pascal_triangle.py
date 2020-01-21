@@ -1,0 +1,29 @@
+#!/usr/bin/python3
+"""pascal triangle"""
+
+
+def pascal_triangle(n):
+    triangle = []
+    last = []
+    for row in range(n):
+        new = []
+        for col in range(row + 1):
+            if row > 0 and col <= (row / 2) and col > 0:
+                try:
+                    new.append(last[col - 1] + last[col])
+                except:
+                    print("list to short", col)
+            elif col == 0:
+                new.append(1)
+            else:
+                back = new[::-1]
+                if row % 2 != 0:
+                    back = back[1:]
+                new += back
+                break
+
+        last = new
+        triangle.append(new)
+    return triangle
+
+print(pascal_triangle(6))

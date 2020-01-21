@@ -1,9 +1,0 @@
-#!/usr/bin/python3
-"""read module"""
-
-
-def number_of_lines(filename=""):
-    f = open(filename, "r")
-    lines = len(f.read().split("\n"))
-    f.close()
-    return lines

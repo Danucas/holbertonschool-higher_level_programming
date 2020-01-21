@@ -3,6 +3,6 @@
 
 
 def number_of_lines(filename=""):
-    with open(filename, "r") as f:
+    with open(filename, "r", encoding="utf-8") as f:
         lines = len(f.read().split("\n"))
         return lines
