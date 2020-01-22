@@ -4,6 +4,8 @@
 
 def pascal_triangle(n):
     """pascal triangle function"""
+    if n <= 0:
+        return []
     triangle = [[1]]
     last = triangle[0]
     for row in range(n - 1):
