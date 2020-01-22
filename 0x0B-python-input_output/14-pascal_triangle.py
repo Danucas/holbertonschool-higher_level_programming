@@ -3,27 +3,17 @@
 
 
 def pascal_triangle(n):
-    triangle = []
-    last = []
-    for row in range(n):
-        new = []
+    """pascal triangle function"""
+    triangle = [[1]]
+    last = triangle[0]
+    for row in range(n - 1):
+        new = [1]
         for col in range(row + 1):
-            if row > 0 and col <= (row / 2) and col > 0:
-                try:
-                    new.append(last[col - 1] + last[col])
-                except:
-                    print("list to short", col)
-            elif col == 0:
+            if col >= row:
                 new.append(1)
             else:
-                back = new[::-1]
-                if row % 2 != 0:
-                    back = back[1:]
-                new += back
-                break
-
-        last = new
+                val = last[col] + last[col + 1]
+                new.append(val)
         triangle.append(new)
+        last = new
     return triangle
-
-print(pascal_triangle(6))
