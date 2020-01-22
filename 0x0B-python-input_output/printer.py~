@@ -1,0 +1,5 @@
+#!/usr/bin/python3
+import time
+for i in range(1024):
+    print("[{}] Holberton".format(i))
+    time.sleep(2)
