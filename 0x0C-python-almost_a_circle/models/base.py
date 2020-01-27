@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module Base"""
+"""Module Base implementation"""
 
 
 import json
@@ -8,6 +8,7 @@ import json
 class Base:
     """Base class"""
     __nb_objects = 0
+
     def __init__(self, id=None):
         """init function"""
         if id is not None:
@@ -25,9 +26,44 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         """parse to json an write the value on a file"""
+        string = "[]"
         if list_objs is not None:
-            if all(issubclass(cls, Base) for x in list_objs):
-                dics = [di.to_dictionary() for di in list_objs]
-                string = cls.to_json_string(dics)
-                with open(cls.__name__ + ".json", "w") as file:
-                    file.write(string)
+            dics = [di.to_dictionary() for di in list_objs]
+            string = cls.to_json_string(dics)
+        with open(cls.__name__ + ".json", "w") as file:
+            file.write(string)
+
+    @staticmethod
+    def from_json_string(json_string):
+        """return objects list from json string"""
+        lis = []
+        if json_string is not None:
+            lis = json.loads(json_string)
+        return lis
+
+    @classmethod
+    def create(cls, **dictionary):
+        """create function"""
+        if cls.__name__ == "Rectangle":
+            new = cls(1, 1)
+        elif cls.__name__ == "Square":
+            new = cls(1)
+        new.update(**dictionary)
+        return new
+
+    @classmethod
+    def load_from_file(cls):
+        """load a pyhton object list from json file"""
+        filename = cls.__name__ + ".json"
+        try:
+            with open(filename, "r") as file:
+                objs = cls.from_json_string(file.read())
+                instances = []
+                for obj in objs:
+                    print(type(obj))
+                    inst = cls.create(**obj)
+                    instances.append(inst)
+                return instances
+        except Exception as e:
+            print(type(e).__name__, e)
+            return []
