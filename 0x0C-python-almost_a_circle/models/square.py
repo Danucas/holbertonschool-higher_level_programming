@@ -20,9 +20,14 @@ class Square(Rectangle):
     @size.setter
     def size(self, value):
         """size getter"""
-        self.width = value
-        self.height = value
-        self.__size = value
+        if type(value) == int:
+            if value < 0:
+                raise ValueError("width must be > 0")
+            self.width = value
+            self.height = value
+            self.__size = value
+        else:
+            raise TypeError("width must be an integer")
 
     def __str__(self):
         """return string representation of rectangle"""
