@@ -62,10 +62,8 @@ class Base:
                 objs = cls.from_json_string(file.read())
                 instances = []
                 for obj in objs:
-                    print(type(obj))
                     inst = cls.create(**obj)
                     instances.append(inst)
                 return instances
-        except Exception as e:
-            print(type(e).__name__, e)
+        except:
             return []
