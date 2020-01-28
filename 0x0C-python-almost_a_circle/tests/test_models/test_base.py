@@ -21,7 +21,7 @@ class TestBase(unittest.TestCase):
     def test_none_id(self):
         """none id test"""
         test_base = Base(None)
-        self.assertEqual(test_base.id, 5)
+        self.assertEqual(test_base.id, 6)
 
     def test_multiple_instances(self):
         """test multiple instances"""
@@ -29,8 +29,8 @@ class TestBase(unittest.TestCase):
         test2 = Base(None)
         test3 = Base(None)
         self.assertEqual(test1.id, 3)
-        self.assertEqual(test2.id, 3)
-        self.assertEqual(test3.id, 4)
+        self.assertEqual(test2.id, 4)
+        self.assertEqual(test3.id, 5)
 
     def test_how_many(self):
         """test how many objects has been created"""
@@ -64,11 +64,17 @@ class TestBase(unittest.TestCase):
             text = json.loads(f.read())
         dic = [di.to_dictionary() for di in dic]
         self.assertEqual(json.loads(Base.to_json_string(dic)), text)
-    def test_create(self):
-        """test the create function"""
+    def test_from_json(self):
+        """test from json string function"""
         dic = [Rectangle(1, 1).to_dictionary(), Rectangle(1, 2).to_dictionary()]
         inp = Rectangle.to_json_string(dic)
         out = Rectangle.from_json_string(inp)
         self.assertEqual(type(dic), list)
         self.assertEqual(type(inp), str)
         self.assertEqual(type(out), list)
+
+    def test_create(self):
+        """Test create and update function"""
+        dic = {"id": 4, "width": 2, "height": 2}
+        rect = Rectangle.create(**dic)
+        self.assertEqual(type(rect), Rectangle)
