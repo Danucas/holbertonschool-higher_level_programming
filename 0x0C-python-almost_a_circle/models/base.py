@@ -3,7 +3,7 @@
 
 
 import json
-import turtle
+#import turtle
 import time
 import random
 
@@ -71,9 +71,10 @@ class Base:
         except:
             return []
 
-    @staticmethod
+    """@staticmethod
     def draw(list_rectangles, list_squares):
-        """turtle drawing function"""
+        """#turtle drawing function"""
+    """
         colors = ["#C14242", "#f0e746", "#b5ed87", "#87edbc", "#87ede8"]
         colors.append("#eb4034")
         colors.append("#e82ca3")
@@ -99,21 +100,47 @@ class Base:
             turt.right(90)
             turt.forward(rect.height)
             turt.end_fill()
-        turt.exitonclick()
+        turt.exitonclick()"""
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
         """save objs as csv files"""
         if cls.__name__ == "Rectangle":
-            string = "id, width, height, x, y\n"
-            for obj in list_objs:
-                obj = obj.to_dictionary()
-                string += str(obj["id"]) + ", " + str(obj["width"]) + ", " + str(obj["height"])
-                string += ", " + str(obj["x"]) + ", " + str(obj["y"]) + "\n"
-            filename = cls.__name__ + ".csv"
-            with open(filename, "w") as f:
-                f.write(string)
+            head = "id,width,height,x,y"
+        elif cls.__name__ == "Square":
+            head = "id,size,x,y"
+        s_obj = ""
+        for obj in list_objs:
+            obj = obj.to_dictionary()
+            attrs = head.split(",")
+            s_obj += ",".join([str(obj[key]) for key in attrs])
+            s_obj += "\n"
+        string = "\n".join([head, s_obj])
+            
+        filename = cls.__name__ + ".csv"
+        with open(filename, "w") as f:
+            f.write(string)
 
     @classmethod
     def load_from_file_csv(cls):
         """load objs from csv files"""
+        name = cls.__name__
+        with open(name + ".csv", "r") as f:
+            cont = f.read().split("\n")
+            objs =[]
+            for obj in cont[1:-1]:
+                objs.append(obj.split(","))
+            rects = []
+            for obj in objs:
+                if name == "Rectangle":
+                    attrs = ["id", "width", "height", "x", "y"]
+                elif name == "Square":
+                    attrs = ["id", "size", "x", "y"]
+                dic = {key: int(obj[i].strip()) for i, key in enumerate(attrs)}
+                rects.append(cls.create(**dic))
+            return rects
+                
+                
+    
+            
+            
