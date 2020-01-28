@@ -13,14 +13,15 @@ class Rectangle(Base):
         self.height = height
         self.x = x
         self.y = y
+
     @property
     def width(self):
-        """property"""
+        """property width"""
         return self.__width
 
     @width.setter
     def width(self, value):
-        """property"""
+        """property setter"""
         if type(value) != int:
             raise TypeError("width must be an integer")
         elif value <= 0:
@@ -29,12 +30,12 @@ class Rectangle(Base):
 
     @property
     def height(self):
-        """property"""
+        """property height"""
         return self.__height
 
     @height.setter
     def height(self, value):
-        """property"""
+        """property setter"""
         if type(value) != int:
             raise TypeError("height must be an integer")
         elif value <= 0:
@@ -43,12 +44,12 @@ class Rectangle(Base):
 
     @property
     def x(self):
-        """property"""
+        """property x attribute"""
         return self.__x
 
     @x.setter
     def x(self, value):
-        """property"""
+        """property x setter"""
         if type(value) != int:
             raise TypeError("x must be an integer")
         elif value < 0:
@@ -57,12 +58,12 @@ class Rectangle(Base):
 
     @property
     def y(self):
-        """property"""
+        """property y attribute"""
         return self.__y
 
     @y.setter
     def y(self, value):
-        """property"""
+        """property y setter"""
         if type(value) != int:
             raise TypeError("y must be an integer")
         elif value < 0:
@@ -83,9 +84,10 @@ class Rectangle(Base):
 
     def __str__(self):
         """return string representation of rectangle"""
-        return "[{}] ({}) {}/{} - {}/{}"\
-            .format(type(self).__name__, self.id, self.__x, self.__y, self.__width, self.__height)
-
+        ret = "[{}] ({}) ".format(type(self).__name__, self.id)
+        ret += "{}/{} - ".format(self.__x, self.__y)
+        ret += "{}/{}".format(self.__width, self.__height)
+        return ret
 
     def update(self, *args, **kwargs):
         """updating attributes function"""
@@ -99,7 +101,8 @@ class Rectangle(Base):
                 setattr(self, kwarg[0], kwarg[1])
 
     def to_dictionary(self):
+        """transform object to dictionary"""
         dic = self.__dict__
         attrs = ["id", "width", "height", "x", "y"]
-        ret = {x: getattr(self, x) for x in attrs }
+        ret = {x: getattr(self, x) for x in attrs}
         return ret
