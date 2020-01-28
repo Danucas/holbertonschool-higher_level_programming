@@ -3,7 +3,7 @@
 
 
 import json
-#import turtle
+import turtle
 import time
 import random
 
@@ -71,10 +71,9 @@ class Base:
         except:
             return []
 
-    """@staticmethod
+    @staticmethod
     def draw(list_rectangles, list_squares):
-        """#turtle drawing function"""
-    """
+        """turtle drawing function"""
         colors = ["#C14242", "#f0e746", "#b5ed87", "#87edbc", "#87ede8"]
         colors.append("#eb4034")
         colors.append("#e82ca3")
@@ -100,7 +99,7 @@ class Base:
             turt.right(90)
             turt.forward(rect.height)
             turt.end_fill()
-        turt.exitonclick()"""
+        turt.exitonclick()
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
@@ -116,7 +115,6 @@ class Base:
             s_obj += ",".join([str(obj[key]) for key in attrs])
             s_obj += "\n"
         string = "\n".join([head, s_obj])
-            
         filename = cls.__name__ + ".csv"
         with open(filename, "w") as f:
             f.write(string)
@@ -127,7 +125,7 @@ class Base:
         name = cls.__name__
         with open(name + ".csv", "r") as f:
             cont = f.read().split("\n")
-            objs =[]
+            objs = []
             for obj in cont[1:-1]:
                 objs.append(obj.split(","))
             rects = []
@@ -139,8 +137,3 @@ class Base:
                 dic = {key: int(obj[i].strip()) for i, key in enumerate(attrs)}
                 rects.append(cls.create(**dic))
             return rects
-                
-                
-    
-            
-            
