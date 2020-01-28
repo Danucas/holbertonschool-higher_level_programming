@@ -3,6 +3,9 @@
 
 
 import json
+import turtle
+import time
+import random
 
 
 class Base:
@@ -67,3 +70,50 @@ class Base:
                 return instances
         except:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """turtle drawing function"""
+        colors = ["#C14242", "#f0e746", "#b5ed87", "#87edbc", "#87ede8"]
+        colors.append("#eb4034")
+        colors.append("#e82ca3")
+        colors.append("#1445e3")
+        turt = turtle
+        lists = list_rectangles + list_squares
+
+        for rect in lists:
+            rn = random.randrange(len(colors))
+            turt.penup()
+            turt.fillcolor(colors[rn])
+            turt.pencolor(colors[rn])
+            turt.setx(rect.x)
+            turt.sety(rect.y)
+            turt.seth(0)
+            turt.pendown()
+            turt.begin_fill()
+            turt.forward(rect.width)
+            turt.right(90)
+            turt.forward(rect.height)
+            turt.right(90)
+            turt.forward(rect.width)
+            turt.right(90)
+            turt.forward(rect.height)
+            turt.end_fill()
+        turt.exitonclick()
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """save objs as csv files"""
+        if cls.__name__ == "Rectangle":
+            string = "id, width, height, x, y\n"
+            for obj in list_objs:
+                obj = obj.to_dictionary()
+                string += str(obj["id"]) + ", " + str(obj["width"]) + ", " + str(obj["height"])
+                string += ", " + str(obj["x"]) + ", " + str(obj["y"]) + "\n"
+            filename = cls.__name__ + ".csv"
+            with open(filename, "w") as f:
+                f.write(string)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """load objs from csv files"""

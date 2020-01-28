@@ -80,3 +80,19 @@ class TestRectangle(unittest.TestCase):
             text = f.read()
         prub = "##\n"*2
         self.assertEqual(text, prub)
+
+    def test_display_padding(self):
+        """try display padding"""
+        self.width = 3
+        self.height = 3
+        self.rect.x = 2
+        self.rect.y = 2
+        sys.stdout = open('out.dat', "w")
+        self.rect.display()
+        sys.stdout.close()
+        text = ""
+        with open("out.dat", "r") as f:
+            text = f.read()
+        prub = "\n\n"
+        prub += "  ###\n"*3
+        self.assertEqual(text, prub)
