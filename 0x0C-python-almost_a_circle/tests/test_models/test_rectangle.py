@@ -3,7 +3,7 @@
 
 
 import unittest
-import StringIO
+import sys
 from models.rectangle import Rectangle
 
 
@@ -72,6 +72,11 @@ class TestRectangle(unittest.TestCase):
         """try display"""
         self.rect.width = 2
         self.rect.height = 2
-        comp = self.rect.display()
+        sys.stdout = open('out.dat', "w")
+        self.rect.display()
+        sys.stdout.close()
+        text = ""
+        with open("out.dat", "r") as f:
+            text = f.read()
         prub = "##\n"*2
-        self.assertEqual(comp, prub)
+        self.assertEqual(text, prub)
