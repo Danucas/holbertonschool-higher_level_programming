@@ -13,10 +13,26 @@ class TestRectangle(unittest.TestCase):
         """setup rectangle function"""
         self.rect = Rectangle(3, 3)
 
+    def test_load_from_file(self):
+        """load from file"""
+        self.assertEqual(type(self.rect.load_from_file()[0]), Rectangle)
+
+    def test_save_to_file_rect(self):
+        """save to none"""
+        self.assertEqual(self.rect.save_to_file([Rectangle(1, 2)]), None)
+
+    def test_save_to_file_empty_list(self):
+        """save to none"""
+        self.assertEqual(self.rect.save_to_file([]), None)
+
+    def test_save_to_file_none(self):
+        """save to none"""
+        self.assertEqual(Rectangle.save_to_file(None), None)
+
     def test_to_dict(self):
         """to dictionary test"""
         dic = self.rect.to_dictionary()
-        self.assertEqual(dic, {'id': 43, 'x': 0, 'height': 3, 'y': 0, 'width': 3})
+        self.assertEqual(dic, {'id': 50, 'x': 0, 'height': 3, 'y': 0, 'width': 3})
 
     def test_display_exists(self):
         """display exists"""
@@ -25,7 +41,7 @@ class TestRectangle(unittest.TestCase):
     def test_str_rect(self):
         """checking __str__"""
         self.rect = Rectangle(2, 2)
-        self.assertEqual(str(self.rect), "[Rectangle] (42) 0/0 - 2/2")
+        self.assertEqual(str(self.rect), "[Rectangle] (49) 0/0 - 2/2")
 
     def test_neg_init_zero_2(self):
         """negaitve parameter"""
