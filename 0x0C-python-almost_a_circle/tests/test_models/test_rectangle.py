@@ -4,6 +4,7 @@
 
 import unittest
 import sys
+import os
 from models.rectangle import Rectangle
 
 
@@ -13,13 +14,19 @@ class TestRectangle(unittest.TestCase):
         """setup rectangle function"""
         self.rect = Rectangle(3, 3)
 
-    def test_load_from_file(self):
+    def test_load_from_file_2(self):
         """load from file"""
+        self.rect.save_to_file([Rectangle(1, 2)])
         self.assertEqual(type(self.rect.load_from_file()[0]), Rectangle)
 
     def test_save_to_file_rect(self):
         """save to none"""
         self.assertEqual(self.rect.save_to_file([Rectangle(1, 2)]), None)
+
+    def test_load_from_file(self):
+        """load from file"""
+        os.remove("Rectangle.json")
+        self.assertEqual(self.rect.load_from_file(), [])
 
     def test_save_to_file_empty_list(self):
         """save to none"""
@@ -32,7 +39,7 @@ class TestRectangle(unittest.TestCase):
     def test_to_dict(self):
         """to dictionary test"""
         dic = self.rect.to_dictionary()
-        self.assertEqual(dic, {'id': 50, 'x': 0, 'height': 3, 'y': 0, 'width': 3})
+        self.assertEqual(dic, {'id': 51, 'x': 0, 'height': 3, 'y': 0, 'width': 3})
 
     def test_display_exists(self):
         """display exists"""
@@ -41,7 +48,7 @@ class TestRectangle(unittest.TestCase):
     def test_str_rect(self):
         """checking __str__"""
         self.rect = Rectangle(2, 2)
-        self.assertEqual(str(self.rect), "[Rectangle] (49) 0/0 - 2/2")
+        self.assertEqual(str(self.rect), "[Rectangle] (50) 0/0 - 2/2")
 
     def test_neg_init_zero_2(self):
         """negaitve parameter"""
