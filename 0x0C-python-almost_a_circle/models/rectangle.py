@@ -3,6 +3,7 @@
 
 
 from models.base import Base
+import pep8
 
 
 class Rectangle(Base):

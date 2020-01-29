@@ -13,6 +13,95 @@ class TestRectangle(unittest.TestCase):
         """setup rectangle function"""
         self.rect = Rectangle(3, 3)
 
+    def test_to_dict(self):
+        """to dictionary test"""
+        dic = self.rect.to_dictionary()
+        self.assertEqual(dic, {'id': 43, 'x': 0, 'height': 3, 'y': 0, 'width': 3})
+
+    def test_display_exists(self):
+        """display exists"""
+        self.assertTrue("display" in dir(self.rect))
+
+    def test_str_rect(self):
+        """checking __str__"""
+        self.rect = Rectangle(2, 2)
+        self.assertEqual(str(self.rect), "[Rectangle] (42) 0/0 - 2/2")
+
+    def test_neg_init_zero_2(self):
+        """negaitve parameter"""
+        with self.assertRaises(ValueError):
+            self.rect = Rectangle(1, 0)
+
+    def test_neg_init_zero_1(self):
+        """negaitve parameter"""
+        with self.assertRaises(ValueError):
+            self.rect = Rectangle(0, 2)
+
+    def test_neg_init_4(self):
+        """negaitve parameter"""
+        with self.assertRaises(ValueError):
+            self.rect = Rectangle(1, 2, 3, -4)
+
+    def test_neg_init_3(self):
+        """negaitve parameter"""
+        with self.assertRaises(ValueError):
+            self.rect = Rectangle(1, 2, -3)
+
+    def test_neg_init_2(self):
+        """negaitve parameter"""
+        with self.assertRaises(ValueError):
+            self.rect = Rectangle(1, -2)
+
+    def test_neg_init_1(self):
+        """negaitve parameter"""
+        with self.assertRaises(ValueError):
+            self.rect = Rectangle(-1, 2)
+
+    def test_init_5_args(self):
+        """wrong fourth parameter"""
+        self.rect = Rectangle(1, 2, 3, 4, 5)
+        self.assertEqual(type(self.rect), Rectangle)
+
+    def test_wrong_init_4(self):
+        """wrong fourth parameter"""
+        with self.assertRaises(TypeError):
+            self.rect = Rectangle(1, 2, 3, "4")
+
+    def test_wrong_init_3(self):
+        """wrong first parameter"""
+        with self.assertRaises(TypeError):
+            self.rect = Rectangle(1, 2, "3")
+
+    def test_wrong_init_2(self):
+        """wrong first parameter"""
+        with self.assertRaises(TypeError):
+            self.rect = Rectangle(1, "2")
+
+    def test_wrong_init_1(self):
+        """wrong first parameter"""
+        with self.assertRaises(TypeError):
+            self.rect = Rectangle("1", 2)
+
+    def test_four_args(self):
+        """four arguments init"""
+        self.rect = Rectangle(1, 2, 3, 4)
+        self.assertEqual(type(self.rect), Rectangle)
+
+    def test_four_args(self):
+        """four arguments init"""
+        self.rect = Rectangle(1, 2, 3, 4)
+        self.assertEqual(type(self.rect), Rectangle)
+
+    def test_rect_three_args(self):
+        """simple three args rect"""
+        self.rect = Rectangle(1, 2, 3)
+        self.assertEqual(type(self.rect), Rectangle)
+
+    def test_simple_rectangle(self):
+        """simple rectangle"""
+        self.rect = Rectangle(1, 2)
+        self.assertEqual(type(self.rect), Rectangle)
+
     def test_change_width_by_negative(self):
         """change width values by negative"""
         with self.assertRaises(ValueError):
@@ -88,6 +177,7 @@ class TestRectangle(unittest.TestCase):
         self.rect.x = 2
         self.rect.y = 2
         sys.stdout = open('out.dat', "w")
+
         self.rect.display()
         sys.stdout.close()
         text = ""
