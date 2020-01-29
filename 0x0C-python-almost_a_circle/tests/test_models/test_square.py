@@ -191,3 +191,14 @@ class TestSquare(unittest.TestCase):
             obj = json.loads(txt)
             self.assertEqual(type(obj), list)
             self.assertEqual(type(obj[0]), dict)
+
+    def test_load_from_file(self):
+        """load from file"""
+        self.sq = Square.load_from_file()
+        self.assertEqual(type(self.sq[0]), Square)
+
+    def test_load_from_file_1(self):
+        """load from file"""
+        os.remove("Square.json")
+        self.sq = Square.load_from_file()
+        self.assertEqual(self.sq, [])
