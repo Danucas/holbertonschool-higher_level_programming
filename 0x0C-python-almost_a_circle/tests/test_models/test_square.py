@@ -1,0 +1,78 @@
+#!/usr/bin/python3
+"""Square unittest module"""
+
+
+import unittest
+import sys
+import os
+from models.square import Square
+
+
+class TestSquare(unittest.TestCase):
+    """square test class"""
+    def setUp(self):
+        """config function"""
+        self.sq = Square(1)
+
+    def test_square(self):
+        """test simple initialization"""
+        self.sq = Square(1)
+        self.assertEqual(type(self.sq), Square)
+
+    def test_squa_two(self):
+        """test simple initialization two"""
+        self.sq = Square(1, 2)
+        self.assertEqual(type(self.sq), Square)
+
+    def test_sq_three(self):
+        """test simple initialization two"""
+        self.sq = Square(1, 2, 3)
+        self.assertEqual(type(self.sq), Square)
+
+    def test_bad_par_1(self):
+        """test simple initialization"""
+        with self.assertRaises(TypeError):
+            self.sq = Square("1")
+
+    def test_bad_par_2(self):
+        """test simple initialization"""
+        with self.assertRaises(TypeError):
+            self.sq = Square(1, "2")
+
+    def test_bad_par_3(self):
+        """test simple initialization"""
+        with self.assertRaises(TypeError):
+            self.sq = Square(1, 2, "3")
+
+    def test_bad_par_4(self):
+        """test simple initialization"""
+        self.sq = Square(1, 2, 3, 4)
+        self.assertEqual(type(self.sq), Square)
+
+    def test_neg_par_1(self):
+        """test simple initialization"""
+        with self.assertRaises(ValueError):
+            self.sq = Square(-1)
+
+    def test_neg_par_2(self):
+        """test simple initialization"""
+        with self.assertRaises(ValueError):
+            self.sq = Square(1, -2)
+
+    def test_neg_par_3(self):
+        """test simple initialization"""
+        with self.assertRaises(ValueError):
+            self.sq = Square(1, 2, -3)
+
+    def test_zero_1(self):
+        """test simple initialization"""
+        with self.assertRaises(ValueError):
+            self.sq = Square(0)
+
+    def test_str(self):
+        """test simple initialization"""
+        self.assertTrue(str(self.sq)[:8] == "[Square]")
+
+    def test_str_exists(self):
+        """str exists?"""
+        self.assertTrue("__str__" in dir(self.sq))
