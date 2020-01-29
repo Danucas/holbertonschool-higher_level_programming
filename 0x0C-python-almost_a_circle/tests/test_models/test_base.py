@@ -64,9 +64,11 @@ class TestBase(unittest.TestCase):
             text = json.loads(f.read())
         dic = [di.to_dictionary() for di in dic]
         self.assertEqual(json.loads(Base.to_json_string(dic)), text)
+
     def test_from_json(self):
         """test from json string function"""
-        dic = [Rectangle(1, 1).to_dictionary(), Rectangle(1, 2).to_dictionary()]
+        dic = [Rectangle(1, 1).to_dictionary()]
+        dic.append(Rectangle(1, 2).to_dictionary())
         inp = Rectangle.to_json_string(dic)
         out = Rectangle.from_json_string(inp)
         self.assertEqual(type(dic), list)

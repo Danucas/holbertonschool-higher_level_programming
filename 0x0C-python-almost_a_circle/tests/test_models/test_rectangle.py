@@ -39,7 +39,8 @@ class TestRectangle(unittest.TestCase):
     def test_to_dict(self):
         """to dictionary test"""
         dic = self.rect.to_dictionary()
-        self.assertEqual(dic, {'id': 51, 'x': 0, 'height': 3, 'y': 0, 'width': 3})
+        tes = {'id': 51, 'x': 0, 'height': 3, 'y': 0, 'width': 3}
+        self.assertEqual(dic, tes)
 
     def test_display_exists(self):
         """display exists"""
