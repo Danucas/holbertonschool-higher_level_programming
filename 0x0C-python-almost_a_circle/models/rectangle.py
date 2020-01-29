@@ -8,6 +8,7 @@ from models.base import Base
 class Rectangle(Base):
     """rectangle class"""
     def __init__(self, width, height, x=0, y=0, id=None):
+        """rectangle init"""
         Base.__init__(self, id)
         self.width = width
         self.height = height
@@ -79,7 +80,7 @@ class Rectangle(Base):
         for y in range(self.__y):
             print()
         for h in range(self.__height):
-            print(" " * self.__x, end='')
+            print(" " * self.__x, end="")
             print("#" * self.__width)
 
     def __str__(self):
@@ -93,6 +94,7 @@ class Rectangle(Base):
         """updating attributes function"""
         attrs = ["id", "width", "height", "x", "y"]
         argus = list(args)
+
         if len(argus) > 0:
             for i, arg in enumerate(argus):
                 setattr(self, attrs[i], arg)

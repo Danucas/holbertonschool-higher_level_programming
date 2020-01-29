@@ -78,3 +78,7 @@ class TestBase(unittest.TestCase):
         dic = {"id": 4, "width": 2, "height": 2}
         rect = Rectangle.create(**dic)
         self.assertEqual(type(rect), Rectangle)
+
+    def test_from_json_string(self):
+        """test from json string function"""
+        self.assertEqual(Base.from_json_string('[{"id": 89}]'), [{"id": 89}])
