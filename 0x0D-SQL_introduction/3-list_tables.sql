@@ -1,2 +1,2 @@
 -- shows tables in a database
-DESCRIBE database ()
+SHOW TABLES 
