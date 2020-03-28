@@ -23,14 +23,12 @@ def main():
                  FROM
                       cities, states
                  WHERE BINARY
-                      states.name=%(state)s AND
-                      cities.state_id=states.id
+                      states.name = %s AND
+                      cities.state_id = states.id
                  ORDER BY
-                      cities.id ASC""", {
-                          'state': argument
-                      })
-    res = {city[0] for city in c.fetchall()}
-    print(', '.join(res))
+                      cities.id ASC""", (argument,))
+    
+    print(', '.join(city[0] for city in c.fetchall()))
 
 if __name__ == '__main__':
     main()
