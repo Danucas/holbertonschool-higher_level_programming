@@ -27,7 +27,6 @@ def main():
                       cities.state_id = states.id
                  ORDER BY
                       cities.id ASC""", (argument,))
-    
     print(', '.join(city[0] for city in c.fetchall()))
 
 if __name__ == '__main__':
