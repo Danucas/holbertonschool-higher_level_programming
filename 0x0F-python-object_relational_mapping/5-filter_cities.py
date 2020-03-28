@@ -28,7 +28,7 @@ def main():
                                   states.id
                              FROM
                                   states
-                             WHERE
+                             WHERE BINARY
                                   states.name=%(state)s)
                  ORDER BY
                       cities.id ASC""", {
