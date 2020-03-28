@@ -17,7 +17,7 @@ def main():
                          user=username,
                          passwd=password)
     c = db.cursor()
-    c.execute("SELECT * FROM states where name like 'N%'")
+    c.execute("SELECT * FROM states where name like 'N%' ORDER BY id ASC")
     for tup in c.fetchall():
         print(tup)
 
