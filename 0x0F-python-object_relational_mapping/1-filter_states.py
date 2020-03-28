@@ -17,7 +17,7 @@ def main():
                          user=username,
                          passwd=password)
     c = db.cursor()
-    c.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+    c.execute("SELECT * FROM states WHERE LEFT(name, 1) = 'N' ORDER BY id ASC")
     for tup in c.fetchall():
         print(tup)
 
