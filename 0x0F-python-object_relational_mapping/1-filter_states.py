@@ -17,7 +17,8 @@ def main():
                          user=username,
                          passwd=password)
     c = db.cursor()
-    c.execute("SELECT * FROM states WHERE LEFT(states.name, 1) = 'N' ORDER BY id ASC")
+    c.execute("""SELECT * FROM states WHERE CONVERT(LEFT(states.name, 1)
+    , BINARY) = CONVERT('N', BINARY) ORDER BY id ASC""")
     for tup in c.fetchall():
         print(tup)
 
