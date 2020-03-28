@@ -22,14 +22,9 @@ def main():
                       cities.name
                  FROM
                       cities, states
-                 WHERE
-                      cities.state_id=(
-                             SELECT
-                                  states.id
-                             FROM
-                                  states
-                             WHERE BINARY
-                                  states.name=%(state)s)
+                 WHERE BINARY
+                      states.name=%(state)s AND
+                      cities.state_id=states.id
                  ORDER BY
                       cities.id ASC""", {
                           'state': argument
