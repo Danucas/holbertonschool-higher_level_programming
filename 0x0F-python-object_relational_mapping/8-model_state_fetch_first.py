@@ -23,7 +23,7 @@ def main():
     session = Session()
     state = session.query(State).first()
     if state is None:
-        print()
+        print('Nothing')
     else:
         print(state)
 
