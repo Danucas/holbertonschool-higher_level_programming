@@ -22,7 +22,10 @@ def main():
     Session = sessionmaker(bind=engine)
     session = Session()
     state = session.query(State).first()
-    print(state)
+    if state is None:
+        print()
+    else:
+        print(state)
 
 if __name__ == '__main__':
     with warnings.catch_warnings(record=True) as w:
