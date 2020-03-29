@@ -21,4 +21,4 @@ class State(Base):
 
     def __str__(self):
         """String representation"""
-        return self.name
+        return str(self.id) + ": " + self.name
