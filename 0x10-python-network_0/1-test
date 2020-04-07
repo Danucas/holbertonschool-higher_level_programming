@@ -1,0 +1,2 @@
+#!/bin/bash
+resp=$(curl -s -o /dev/null --write-out "%{http_code}" -X GET "$1");if [ "${resp:0:2}" == "30" ]; then route=$(echo "$1" | cut -d ':' -f3 | cut -d '/' -f1); if [ "$route" != "" ];then re_url=$(curl -sI -X GET "$url" | grep Location | cut -d':' -f 2- | xargs | sed -e 's#/#:'${route}'/#3'); else re_url=$(curl -sI -X GET "$1" | grep Location | cut -d':' -f 2- | xargs ); fi; curl -sf -X GET ${re_url%$'\r'}; elif [ "${resp:0:3}" == "200" ];then curl -sf -X GET "$1"; fi
