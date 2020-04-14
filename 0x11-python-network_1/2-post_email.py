@@ -17,7 +17,7 @@ def main():
     req = urllib.request.Request(url, data)
     with urllib.request.urlopen(req) as response:
         txt = response.read()
-        charset = response.get_content_charset()
+        charset = response.headers.get_content_charset()
         print(txt.decode(charset))
 
 
