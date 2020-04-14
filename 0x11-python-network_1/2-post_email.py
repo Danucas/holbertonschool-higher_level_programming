@@ -16,7 +16,9 @@ def main():
     data = data.encode('ascii')
     req = urllib.request.Request(url, data)
     with urllib.request.urlopen(req) as response:
-        print(response.read())
+        txt = response.read()
+        charset = response.get_content_charset()
+        print(txt.decode(charset))
 
 
 if __name__ == '__main__':
