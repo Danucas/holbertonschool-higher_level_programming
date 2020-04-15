@@ -15,6 +15,8 @@ def main():
     js = response.json()
     if 'id' in js:
         print('{}'.format(js['id']))
+    else:
+        print('None')
 
 if __name__ == '__main__':
     main()
