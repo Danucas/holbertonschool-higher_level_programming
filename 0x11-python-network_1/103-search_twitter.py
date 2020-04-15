@@ -40,9 +40,9 @@ def main():
             name = t['retweeted_status']['user']['name']
             text = t['retweeted_status']['text']
             id_t = t['retweeted_status']['id']
-            if str(id_t) == str(past_id):
-                print("\033[31m\t\tsame id \033[0m")
-                continue
+        if str(id_t) == str(past_id):
+            #print("\033[31m\t\tsame id \033[0m")
+            continue
         print('[{}] {} by {}'.format(id_t, text, name))
         past_id = id_t
         count += 1
