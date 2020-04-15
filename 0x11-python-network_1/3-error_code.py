@@ -18,7 +18,7 @@ def main():
             charset = response.headers.get_content_charset()
             print(txt.decode(charset))
     except urllib.error.HTTPError as e:
-        print(e)
+        print('Error code: {}'.format(e.code))
 
 
 if __name__ == '__main__':
