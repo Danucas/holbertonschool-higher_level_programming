@@ -13,9 +13,7 @@ def main():
     print('Body response:')
     print('\t- type: {}'.format(type(txt)))
     print('\t- content: {}'.format(txt))
-    #print('\t- utf8 content: {}'.format(txt.decode(charset)))
 
 
 if __name__ == '__main__':
-   main()
-    
+    main()

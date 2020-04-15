@@ -11,9 +11,9 @@ import sys
 def main():
     url = "http://0.0.0.0:5000/search_user"
     if len(sys.argv) < 2:
-        query =""
+        query = ""
     else:
-        query =sys.argv[1]
+        query = sys.argv[1]
     values = {'q': query}
     response = requests.post(url, data=values)
     try:
@@ -27,5 +27,4 @@ def main():
 
 
 if __name__ == '__main__':
-   main()
-    
+    main()

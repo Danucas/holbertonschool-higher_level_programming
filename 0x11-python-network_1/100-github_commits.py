@@ -17,5 +17,4 @@ def main():
         print(com['sha'], com['commit']['author']['name'])
 
 if __name__ == '__main__':
-   main()
-    
+    main()
