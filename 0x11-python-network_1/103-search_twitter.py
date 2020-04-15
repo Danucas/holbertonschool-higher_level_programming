@@ -27,23 +27,11 @@ def main():
     query = {'q': sys.argv[3], 'count': 40}
     headers = {'Authorization': 'Bearer {}'.format(token)}
     response = requests.get(url, params=query, headers=headers)
-    past_id = 0
-    count = 0
-    for t in response.json()['statuses']:
-        if count == 5:
-            break
+    for t in response.json()['statuses'][:5]:
         name = t['user']['name']
         id_t = t['id']
         text = t['text']
-        if 'retweeted_status' in t:
-            name = t['retweeted_status']['user']['name']
-            text = t['retweeted_status']['text']
-            id_t = t['retweeted_status']['id']
-        if str(id_t) == str(past_id):
-            continue
         print('[{}] {} by {}'.format(id_t, text, name))
-        past_id = id_t
-        count += 1
 
 
 if __name__ == '__main__':
