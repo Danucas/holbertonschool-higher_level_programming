@@ -10,7 +10,10 @@ import sys
 
 def main():
     response = requests.get(sys.argv[1])
-    print(response.headers['X-Request-Id'])
+    try:
+        print(response.headers['X-Request-Id'])
+    except:
+        pass
 
 
 if __name__ == '__main__':
