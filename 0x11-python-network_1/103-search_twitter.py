@@ -25,18 +25,28 @@ def main():
     bearrer_token = requests.post(auth_ep, data=data, headers=headers)
     token = bearrer_token.json()['access_token']
     url = "https://api.twitter.com/1.1/search/tweets.json"
-    query = {'q': sys.argv[3]}
+    query = {'q': sys.argv[3], 'count': 40}
     headers = {'Authorization': 'Bearer {}'.format(token)}
     response = requests.get(url, params=query, headers=headers)
-    for t in response.json()['statuses'][:1]:
-        #print(json.dumps(t, indent=4, sort_keys=True))
+    past_id = 0
+    count = 0
+    for t in response.json()['statuses']:
+        if count == 5:
+            break
         name = t['user']['name']
         id_t = t['id']
         text = t['text']
-        
-        #print(name, json.dumps(t['user'], indent=4, sort_keys=True))
-        #print(id_t)
-        #print('[{}] {} by {}'.format(id_t, text, name))
+        if 'retweeted_status' in t:
+            name = t['retweeted_status']['user']['name']
+            text = t['retweeted_status']['text']
+            id_t = t['retweeted_status']['id']
+            if str(id_t) == str(past_id):
+                print("\033[31m\t\tsame id \033[0m")
+                continue
+        print('[{}] {} by {}'.format(id_t, text, name))
+        past_id = id_t
+        count += 1
+
 
 if __name__ == '__main__':
    main()
