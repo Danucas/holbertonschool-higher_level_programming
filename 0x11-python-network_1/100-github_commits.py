@@ -14,7 +14,9 @@ def main():
     response = requests.get(url)
     commits = response.json()
     for com in commits[:10]:
-        print(com['sha'], com['commit']['author']['name'])
+        sha = com['sha']
+        author = com['commit']['author']['name']
+        print('{}: {}'.format(sha, author))
 
 if __name__ == '__main__':
     main()
