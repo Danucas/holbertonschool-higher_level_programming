@@ -10,7 +10,7 @@ import sys
 
 def main():
     url = "https://api.github.com/repos/{}/{}/commits"
-    url = url.format(sys.argv[1], sys.argv[2])
+    url = url.format(sys.argv[2], sys.argv[1])
     response = requests.get(url)
     commits = response.json()
     for com in commits[:10]:
