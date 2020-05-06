@@ -16,7 +16,11 @@ function findSecondBiggest () {
       last = actual;
     }
   }
-  return (last);
+  if (novo === last) {
+    return (0);
+  } else {
+    return (last);
+  }
 }
 
 if (isNaN(a)) {
