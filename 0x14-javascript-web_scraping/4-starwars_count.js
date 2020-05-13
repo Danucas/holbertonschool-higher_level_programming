@@ -10,7 +10,7 @@ request(url, function (err, res, body) {
     const bodyRes = JSON.parse(body).results;
     const userString = 'https://swapi-api.hbtn.io/api/people/18/';
     for (const resp of bodyRes) {
-      if (resp.characters.indexOf(userString) > -1) {
+      if (resp.characters.includes(userString)) {
         count++;
       }
     }
