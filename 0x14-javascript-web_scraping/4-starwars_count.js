@@ -4,15 +4,16 @@ const request = require('request');
 const url = process.argv[2];
 request(url, function (err, res, body) {
   if (err) {
-    console.log(err);
-  }
-  let count = 0;
-  const bodyRes = JSON.parse(body).results;
-  const userString = 'https://swapi-api.hbtn.io/api/people/18/';
-  for (res of bodyRes) {
-    if (res.characters.indexOf(userString) > -1) {
-      count++;
+      console.log('code:', res.statusCode);
+  } else {
+    let count = 0;
+    const bodyRes = JSON.parse(body).results;
+    const userString = 'https://swapi-api.hbtn.io/api/people/18/';
+    for (const res of bodyRes) {
+      if (res.characters.indexOf(userString) > -1) {
+        count++;
+      }
     }
+    console.log(count);
   }
-  console.log(count);
 });
