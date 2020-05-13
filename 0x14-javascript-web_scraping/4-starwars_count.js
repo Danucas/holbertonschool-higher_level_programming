@@ -8,10 +8,12 @@ request(url, function (err, res, body) {
   } else {
     let count = 0;
     const bodyRes = JSON.parse(body).results;
-    const userString = 'https://swapi-api.hbtn.io/api/people/18/';
+    const us = '/18/';
     for (const resp of bodyRes) {
-      if (resp.characters.includes(userString)) {
-        count++;
+      for (const chara of resp.characters) {
+        if (chara.endsWith(us)) {
+          count++;
+        }
       }
     }
     console.log(count);
